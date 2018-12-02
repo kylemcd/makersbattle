@@ -3,9 +3,12 @@
   "version": "0.4.0",
   "private": true,
   "dependencies": {
+    "polished": "^2.3.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-helmet": "^5.2.0",
+    "react-scripts": "2.0.4",
+    "styled-components": "^4.1.2"
   },
   "scripts": {
     "start": "run-p start:**",
