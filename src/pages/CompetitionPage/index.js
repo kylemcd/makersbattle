@@ -136,7 +136,39 @@ class CompetitionPage extends Component {
             }
 
             
-          }).catch(error => {})
+          }).catch(error => {
+            if(userIndex === 0){
+              let tempTasksArray = this.state.user1TasksPerDay;
+              tempTasksArray.push(0);
+
+              let tempPointsArray = this.state.user1PointsPerDay;
+              tempPointsArray.push(0);
+
+              let tempPraiseArray = this.state.user1PraisePerDay;
+              tempPraiseArray.push(0);
+
+              this.setState({
+                user1TasksPerDay: tempTasksArray,
+                user1PointsPerDay: tempPointsArray,
+                user1PraisePerDay: tempPraiseArray
+              })         
+            } else {
+              let tempArray = this.state.user2TasksPerDay;
+              tempArray.push(0);
+
+              let tempPointsArray = this.state.user2PointsPerDay;
+              tempPointsArray.push(0);
+
+              let tempPraiseArray = this.state.user2PraisePerDay;
+              tempPraiseArray.push(0);
+
+              this.setState({
+                user2TasksPerDay: tempArray,
+                user2PointsPerDay: tempPointsArray,
+                user2PraisePerDay: tempPraiseArray
+              })  
+            }
+          })
       }
     });
   }
