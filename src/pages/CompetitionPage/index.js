@@ -35,7 +35,7 @@ class CompetitionPage extends Component {
     user2PointsPerDay: [],
     user1PraisePerDay: [],
     user2PraisePerDay: [],
-    startDate: new Date(2018, 10, 28),
+    startDate: new Date(2018, 10, 25),
     endDate: new Date(2018, 11, 1),
     duration: 0,
     loading: true,
@@ -86,17 +86,17 @@ class CompetitionPage extends Component {
             [...data].forEach((item) => {
               tasks++;
               dailyTasks++;
-              dailyPoints = dailyPoints + (parseInt(item.praise) / 50) + tasks;
+              dailyPoints = dailyPoints + (parseInt(item.praise) / 250) + tasks;
               dailyPraise = dailyPraise + parseInt(item.praise);
               if(userIndex === 0){
                 this.setState({
-                  user1Score: this.state.user1Score + (parseInt(item.praise) / 50) + tasks,
+                  user1Score: this.state.user1Score + (parseInt(item.praise) / 250) + tasks,
                   user1Tasks: tasks,
                   user1Praise: this.state.user1Praise + item.praise
                 })
               } else {
                 this.setState({
-                  user2Score: this.state.user2Score + (parseInt(item.praise) / 50) + tasks,
+                  user2Score: this.state.user2Score + (parseInt(item.praise) / 250) + tasks,
                   user2Tasks: tasks,
                   user2Praise: this.state.user2Praise + item.praise
                 })
