@@ -26,7 +26,7 @@ export const ContentContainer = styled.div`
   @media(max-width: ${mediumBp}px){
     margin: 0 12px 80px 12px;
   }
-  margin: 0 auto 80px 0;
+  margin: 0 auto 80px auto;
   max-width: 800px;
 `;
 
