@@ -51,7 +51,7 @@ export const UserSocialList = styled.ul`
   
   li {
     display: inline;
-    margin-right: 6px;
+    margin-right: 8px;
   } 
 
   a {
@@ -59,8 +59,20 @@ export const UserSocialList = styled.ul`
     transition: 0.2s ease-in-out;
 
     &:hover {
-      color: ${darken(0.3, teal)};
+      opacity: 0.8;
     }
+  }
+
+  .twitter {
+    color: #1DA1F2;
+  }
+
+  .product-hunt {
+    color: #DA552F;
+  }
+
+  .makerlog {
+    color: #47e0a0;
   }
 `;
 

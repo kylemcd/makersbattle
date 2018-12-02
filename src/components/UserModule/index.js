@@ -22,8 +22,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faTwitter, 
-  faProductHunt, 
+  faProductHunt,
 } from '@fortawesome/free-brands-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 class UserModule extends Component {
   render() {
@@ -41,15 +42,22 @@ class UserModule extends Component {
               <UserSocialList>
                 {user.twitter_handle &&
                   <li>
-                    <a href={`https://twitter.com/${user.twitter_handle}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`https://twitter.com/${user.twitter_handle}`} target="_blank" className="twitter" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faTwitter} /> 
                     </a>
                   </li>
                 }
                 {user.product_hunt_handle &&
                   <li>
-                    <a href={`https://producthunt.com/${user.product_hunt_handle}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`https://producthunt.com/${user.product_hunt_handle}`} target="_blank" className="product-hunt" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faProductHunt} /> 
+                    </a>
+                  </li>
+                }
+                {user.username &&
+                  <li>
+                    <a href={`https://getmakerlog.com/@${user.username}`} target="_blank" className="makerlog" rel="noopener noreferrer">
+                      <FontAwesomeIcon icon={faCheck} /> 
                     </a>
                   </li>
                 }
@@ -57,7 +65,12 @@ class UserModule extends Component {
             </UserModuleCardContent>
           </UserModuleSection>
           <UserScore>
-            {winner !== null && (winner ? <Winner>Winner</Winner> : <Loser>Loser</Loser>)}
+            {winner !== null && (winner ? 
+              <Winner>
+                Winner Winner <span role="img" aria-label="chicken">🐔</span><span role="img" aria-label="dinner">🍽</span>
+              </Winner> : 
+              <Loser>Loser</Loser>
+            )}
           </UserScore>
           {/* <MakerlogContainer>
             View&nbsp; 
