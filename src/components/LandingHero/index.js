@@ -39,7 +39,7 @@ class LandingHero extends Component {
               <ContentListItem>
                 <span role="img" aria-label="maker">👨‍🎤</span>
                 <span role="img" aria-label="maker">👩‍🎤</span>
-                &nbsp;Weekly Maker vs Maker Battles
+                &nbsp;Weekly 'Maker vs Maker' Battles
               </ContentListItem>
               <ContentListItem>
               <span role="img" aria-label="check">🗓</span> Challenge a new maker every week
