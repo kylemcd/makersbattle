@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { black } from '../../utils/colors';
 import { mediumBp } from '../../utils/breakpoints';
 
+const barBlue = '#47b8e0';
+const barRed = '#ff7473';
+
 export const CompetitionPageContainer = styled.div`
  
 `;
@@ -32,5 +35,16 @@ export const ContentContainer = styled.div`
 
 export const SplitContainer = styled.div`
   display: flex;
+  margin-top: 24px;
   justify-content: space-between;
+`;
+
+export const DividerRed = styled.div`
+  background-color: ${barRed};
+  width: 12px;
+`;
+
+export const DividerBlue = styled.div`
+  background-color: ${barBlue};
+  width: 12px;
 `;

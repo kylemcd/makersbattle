@@ -8,7 +8,9 @@ import {
   UserModuleContainer,
   Versus,
   ContentContainer,
-  SplitContainer
+  SplitContainer,
+  DividerRed,
+  DividerBlue
 } from './styled';
 
 import Header from '../../components/Header';
@@ -221,6 +223,8 @@ class CompetitionPage extends Component {
                 tasksPerDay={user1TasksPerDay}
                 pointsPerDay={user1PointsPerDay}
                 praisePerDay={user1PraisePerDay}/>
+              <DividerRed />
+              <DividerBlue />
               <NumericalTable 
                 tasksPerDay={user2TasksPerDay}
                 pointsPerDay={user2PointsPerDay}

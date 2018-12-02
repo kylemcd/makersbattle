@@ -5,7 +5,6 @@ const tableBorder = '#eee';
 
 export const NumericalTableContainer = styled.div`
   color: ${black};
-  margin-top: 16px;
   width: 100%;
 `;
 
