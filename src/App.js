@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import './fonts.css';
 
 import LandingPage from './pages/LandingPage';
+
+ReactGA.initialize('UA-78427684-5');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
   render() {
