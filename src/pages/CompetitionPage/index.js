@@ -35,8 +35,8 @@ class CompetitionPage extends Component {
     user2PointsPerDay: [],
     user1PraisePerDay: [],
     user2PraisePerDay: [],
-    startDate: new Date(2018, 10, 25),
-    endDate: new Date(2018, 11, 1),
+    startDate: new Date(2018, 10, 28),
+    endDate: new Date(2018, 11, 5),
     duration: 0,
     loading: true,
     complete: false
@@ -46,11 +46,11 @@ class CompetitionPage extends Component {
 
     const duration =  new moment.duration(this.state.endDate - this.state.startDate).asDays();
 
+    console.log(this.state.endDate)
+
     this.setState({
       duration
     });
-
-    console.log(duration)
 
     if(new Date() > this.state.endDate){
       this.setState({
