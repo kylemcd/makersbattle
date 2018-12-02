@@ -27,7 +27,7 @@ class CreatedBy extends Component {
   render() {
     return (
       <CreatedByContainer>
-        Created by <a href="https://twitter.com/designbykyle" target="_blank">@designbykyle</a>
+        Created by <a href="https://twitter.com/designbykyle" target="_blank" rel="noopener noreferrer">@designbykyle</a>
       </CreatedByContainer>
     );
   }

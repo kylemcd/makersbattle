@@ -53,9 +53,8 @@ class CompetitionPage extends Component {
         const day = moment(currentDate).date();
         const month = months[moment(currentDate, "MMM").month()];
         
-        axios
-          .get(`https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`)
-          .then((response) => {
+        // eslint-disable-next-line
+        axios.get(`https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`).then((response) => {
             const data = response.data.data;
 
             [...data].forEach((item) => {

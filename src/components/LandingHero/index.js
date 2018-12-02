@@ -45,7 +45,7 @@ class LandingHero extends Component {
               <span role="img" aria-label="check">🗓</span> Challenge a new maker every week
               </ContentListItem>
               <ContentListItem>
-                <span role="img" aria-label="check">✅ </span> Use <Makerlog href="https://getmakerlog.com" target="_blank">Makerlog</Makerlog> to defeat your friends and foes
+                <span role="img" aria-label="check">✅ </span> Use <Makerlog href="https://getmakerlog.com" target="_blank" rel="noopener noreferrer">Makerlog</Makerlog> to defeat your friends and foes
               </ContentListItem>
             </ContentList>
           </ContentContainer>
@@ -73,7 +73,7 @@ class LandingHero extends Component {
           </ContentContainer>
         </HeroRight>
         <CreatedBy>
-          Created by <a href="https://twitter.com/designbykyle" target="_blank">@designbykyle</a>
+          Created by <a href="https://twitter.com/designbykyle" target="_blank" rel="noopener noreferrer">@designbykyle</a>
         </CreatedBy>
       </HeroContainer>
     );

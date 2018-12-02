@@ -24,8 +24,10 @@ class Logo extends Component {
   render() {
     return (
       <LogoContainer>
-        <LogoEmojiContainer role="img" aria-label="swords">
-          ⚔️
+        <LogoEmojiContainer>
+          <span role="img" aria-label="swords">
+            ⚔️
+          </span>
         </LogoEmojiContainer>
         <LogoTextContainer>
           Makers Battle

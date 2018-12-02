@@ -19,8 +19,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faTwitter, 
   faProductHunt, 
-  faGithub, 
-  faDribbble
 } from '@fortawesome/free-brands-svg-icons';
 
 class UserModule extends Component {
@@ -37,14 +35,14 @@ class UserModule extends Component {
               <UserSocialList>
                 {user.twitter_handle &&
                   <li>
-                    <a href={`https://twitter.com/${user.twitter_handle}`} target="_blank" rel="noopener">
+                    <a href={`https://twitter.com/${user.twitter_handle}`} target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faTwitter} /> 
                     </a>
                   </li>
                 }
                 {user.product_hunt_handle &&
                   <li>
-                    <a href={`https://producthunt.com/${user.product_hunt_handle}`} target="_blank" rel="noopener">
+                    <a href={`https://producthunt.com/${user.product_hunt_handle}`} target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faProductHunt} /> 
                     </a>
                   </li>
@@ -58,7 +56,7 @@ class UserModule extends Component {
           </UserScore>
           <MakerlogContainer>
             View&nbsp; 
-            <Makerlog href={`https://getmakerlog.com/@${user.username}`} target="_blank" rel="noopener">
+            <Makerlog href={`https://getmakerlog.com/@${user.username}`} target="_blank" rel="noopener noreferrer">
               Makerlog
             </Makerlog> 
             &nbsp;Profile
