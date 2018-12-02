@@ -4,23 +4,16 @@ import { mediumBp} from '../../utils/breakpoints';
 import { darken } from 'polished';
 
 export const UserModuleContainer = styled.div`
-  background-color: ${gray};
-  flex: 0 1 50%;
-  padding: 20px;
-
-  @media(min-width: ${mediumBp}px){
-    padding: 40px 60px;
-  }
+  flex: 0 1 45%;
+  margin: 45px auto 0;
 `;
 
 export const UserModuleCard = styled.div`
-  align-items: center;
   background-color: ${white};
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%;
+  margin-right: 0;
+  @media(min-width: ${mediumBp}px){
+    width: 300px;
+  }
 `;
 
 export const UserModuleSection = styled.div`
@@ -29,41 +22,32 @@ export const UserModuleSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
-
-  @media(min-width: ${mediumBp}px){
-    flex-direction: row;
-  }
 `;
 
 export const UserModuleCardContent = styled.div`
-  
+  display: flex;
+  flex-direction: column;
 `;
 
 export const UserAvatar = styled.img`
-  border-radius: 8px;
+  border-radius: 50%;
   height: auto;
   margin-bottom: 18px;
-  max-width: 120px;
+  max-width: 85px;
   width: 100%;
-
-  @media(min-width: ${mediumBp}px){
-    margin-right: 24px;
-  }
 `;
 
 export const UserName = styled.h2`
   margin-top: 0;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 4px;
 `;
 
 export const UserSocialList = styled.ul`
   list-style: none;
   padding: 0;
-
-  @media(max-width: ${mediumBp}px){
-    text-align: center;
-  }
+  text-align: center;
+  margin: 0;
   
   li {
     display: inline;
@@ -117,7 +101,7 @@ export const Winner = styled.p`
   color: green;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 8px;
   margin-bottom: 0;
 `;
 
@@ -125,7 +109,7 @@ export const Loser = styled.p`
   color: red;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 8px;
   margin-bottom: 0;
 `;
 
@@ -136,6 +120,6 @@ export const UserAvatarContainer = styled.div`
 export const Crown = styled.div`
   position: absolute;
   font-size: 58px;
-  top: -40px;
+  top: -30px;
   left: -20px;
 `;

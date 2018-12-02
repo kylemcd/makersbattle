@@ -1,17 +1,31 @@
 import styled from 'styled-components';
-import { gray } from '../../utils/colors';
+import { gray, black } from '../../utils/colors';
 import { mediumBp } from '../../utils/breakpoints';
 
 export const CompetitionPageContainer = styled.div`
-
+ 
 `;
 
 export const UserModuleContainer = styled.div`
-  background-color: ${gray};
+  align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+`;
 
-  @media(min-width: ${mediumBp}px){
-    flex-direction: row;
+export const Versus = styled.div`
+  background-color: ${black};
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+`;
+
+export const ContentContainer = styled.div`
+  @media(max-width: ${mediumBp}px){
+    padding: 0 12px;
   }
 `;

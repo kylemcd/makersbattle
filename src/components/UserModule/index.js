@@ -28,7 +28,6 @@ import {
 class UserModule extends Component {
   render() {
     const { user, score, winner } = this.props;
-    console.log(winner)
     return (
       <UserModuleContainer>
         <UserModuleCard winnner={winner}>
@@ -58,17 +57,15 @@ class UserModule extends Component {
             </UserModuleCardContent>
           </UserModuleSection>
           <UserScore>
-            <UserScoreHeader>Score</UserScoreHeader>
-            <UserScoreScore>{score}</UserScoreScore>
             {winner !== null && (winner ? <Winner>Winner</Winner> : <Loser>Loser</Loser>)}
           </UserScore>
-          <MakerlogContainer>
+          {/* <MakerlogContainer>
             View&nbsp; 
             <Makerlog href={`https://getmakerlog.com/@${user.username}`} target="_blank" rel="noopener noreferrer">
               Makerlog
             </Makerlog> 
             &nbsp;Profile
-          </MakerlogContainer>
+          </MakerlogContainer> */}
         </UserModuleCard>
       </UserModuleContainer>
     );
