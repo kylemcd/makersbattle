@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import { gray, black } from '../../utils/colors';
 import { mediumBp } from '../../utils/breakpoints';
 
+const barBlue = '#47b8e0';
+const barRed = '#ff7473';
+
 export const ScoreBarContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 800px;
-  margin: 64px auto 0;
+  margin: 40px auto 16px;
 `;
 
 export const ScoreBar1 = styled.div`
   height: 10px;
-  background-color: red;
+  background-color: ${barRed};
   border-radius: 4px 0 0 4px;
   position: absolute;
   left: 0;
@@ -19,7 +22,7 @@ export const ScoreBar1 = styled.div`
 
 export const ScoreBar2 = styled.div`
   height: 10px;
-  background-color: blue;
+  background-color: ${barBlue};
   border-radius: 0 4px 4px 0;
   position: absolute;
   right: 0;
