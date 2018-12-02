@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { white , gray, black, teal } from '../../utils/colors';
 import { mediumBp} from '../../utils/breakpoints';
 import { darken } from 'polished';
@@ -91,6 +91,7 @@ export const UserScoreHeader = styled.span`
 export const UserScoreScore = styled.h1`
   font-size: 48px;
   margin-top: 4px;
+  margin-bottom: 0;
 `;
 
 export const MakerlogContainer = styled.div`
@@ -98,6 +99,7 @@ export const MakerlogContainer = styled.div`
   background-color: ${black};
   padding: 8px 16px;
   border-radius: 8px 8px 0 0;
+  margin-top: 24px;
 `;
 
 export const Makerlog = styled.a`
@@ -109,4 +111,31 @@ export const Makerlog = styled.a`
   &:hover {
     color: ${darken(0.3, '#47e0a0')};
   }
-`
+`;
+
+export const Winner = styled.p`
+  color: green;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 0;
+`;
+
+export const Loser = styled.p`
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 0;
+`;
+
+export const UserAvatarContainer = styled.div`
+  position: relative;
+`;
+
+export const Crown = styled.div`
+  position: absolute;
+  font-size: 58px;
+  top: -40px;
+  left: -20px;
+`;

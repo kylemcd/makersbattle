@@ -24,6 +24,7 @@ class CompetitionPage extends Component {
     endDate: new Date(2018, 11, 1),
     duration: 0,
     loading: true,
+    complete: false
   }
 
   componentWillMount = async () =>{
@@ -33,6 +34,13 @@ class CompetitionPage extends Component {
     this.setState({
       duration
     });
+
+
+    if(new Date() > this.state.endDate){
+      this.setState({
+        complete: true
+      })
+    }
   
 
     this.getUsersTasks(duration);
@@ -97,14 +105,14 @@ class CompetitionPage extends Component {
   }
 
   render() {
-    const { user1Score, user2Score, user1, user2, loading } = this.state;
+    const { user1Score, user2Score, user1, user2, loading, complete } = this.state;
     return (
       <CompetitionPageContainer>
         <Header />
         {!loading &&
           <UserModuleContainer>
-            <UserModule user={user1} score={user1Score.toFixed(2)} />
-            <UserModule user={user2} score={user2Score.toFixed(2)} />
+            <UserModule user={user1} score={user1Score.toFixed(2)} winner={complete ? (user1Score > user2Score) : null} />
+            <UserModule user={user2} score={user2Score.toFixed(2)} winner={complete ? (user1Score < user2Score) : null} />
           </UserModuleContainer>
         }
         <CreatedBy />

@@ -12,7 +12,11 @@ import {
   UserScoreHeader,
   UserScoreScore,
   MakerlogContainer,
-  Makerlog
+  Makerlog,
+  Winner, 
+  Loser,
+  UserAvatarContainer,
+  Crown
 } from './styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,13 +27,16 @@ import {
 
 class UserModule extends Component {
   render() {
-    const { user, score } = this.props;
-    console.log(user)
+    const { user, score, winner } = this.props;
+    console.log(winner)
     return (
       <UserModuleContainer>
-        <UserModuleCard>
+        <UserModuleCard winnner={winner}>
           <UserModuleSection>
-            <UserAvatar src={user.avatar} />
+            <UserAvatarContainer>
+              {winner !== null && (winner && <Crown><span role="img" aria-label="crown">👑</span></Crown>)}
+              <UserAvatar src={user.avatar} />
+            </UserAvatarContainer>
             <UserModuleCardContent>
               <UserName>{user.first_name} {user.last_name}</UserName>
               <UserSocialList>
@@ -53,6 +60,7 @@ class UserModule extends Component {
           <UserScore>
             <UserScoreHeader>Score</UserScoreHeader>
             <UserScoreScore>{score}</UserScoreScore>
+            {winner !== null && (winner ? <Winner>Winner</Winner> : <Loser>Loser</Loser>)}
           </UserScore>
           <MakerlogContainer>
             View&nbsp; 
