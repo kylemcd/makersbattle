@@ -24,15 +24,13 @@ export const Versus = styled.div`
 
 export const ContentContainer = styled.div`
   @media(max-width: ${mediumBp}px){
-    padding: 0 12px;
+    margin: 0 12px;
   }
   margin: 0 auto;
   max-width: 800px;
-  width: 100%;
 `;
 
 export const SplitContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
 `;
