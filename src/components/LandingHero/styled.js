@@ -162,3 +162,7 @@ export const CreatedBy = styled.div`
     }
   }
 `;
+
+export const TwitterContainer = styled.div`
+  margin-top: 32px;
+`;

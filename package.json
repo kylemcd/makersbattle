@@ -8,6 +8,7 @@
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-scripts": "2.0.4",
+    "react-twitter-embed": "^2.0.4",
     "styled-components": "^4.1.2"
   },
   "scripts": {

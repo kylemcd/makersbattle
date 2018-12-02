@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TwitterFollowButton } from 'react-twitter-embed';
 
 import Logo from '../Logo';
 
@@ -18,7 +19,8 @@ import {
   FormStyle,
   FormButton,
   ContentParagraph,
-  CreatedBy
+  CreatedBy,
+  TwitterContainer
 } from './styled'
 
 class LandingHero extends Component {
@@ -63,6 +65,11 @@ class LandingHero extends Component {
               </FormInputGroup>
               <FormButton type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"v/> 
             </FormStyle>
+            <TwitterContainer>
+              <TwitterFollowButton
+                screenName={'makersbattle'}
+              />
+              </TwitterContainer>
           </ContentContainer>
         </HeroRight>
         <CreatedBy>
