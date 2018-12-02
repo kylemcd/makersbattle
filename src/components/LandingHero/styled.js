@@ -93,6 +93,7 @@ export const FormField = styled.input`
   padding: 16px 24px;
   transition: border 0.2s ease-in-out;
   width: auto;
+  -webkit-appearance: none;
 
   @media(min-width: ${mediumBp}px){
     min-width: 300px;
@@ -135,6 +136,7 @@ export const FormButton = styled.input`
   padding: 16px 24px;
   margin-top: 16px;
   transition: background-color 0.2s ease-in-out;
+  -webkit-appearance: none;
 
   &:hover, &:focus {
     background-color: ${darken(0.2, teal)};
