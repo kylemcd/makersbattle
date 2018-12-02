@@ -143,6 +143,7 @@ export const FormButton = styled.input`
 `;
 
 export const CreatedBy = styled.div`
+  background-color: ${white};
   border-top: 2px solid ${gray};
   border-left: 2px solid ${gray};
   border-top-left-radius: 8px;
