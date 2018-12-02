@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Helmet from 'react-helmet';
 import UserModule from '../../components/UserModule';
 
 import {
@@ -198,6 +199,12 @@ class CompetitionPage extends Component {
             user1TasksPerDay, user1PointsPerDay, user1PraisePerDay, user2TasksPerDay, user2PointsPerDay, user2PraisePerDay} = this.state;
     return (
       <CompetitionPageContainer>
+        <Helmet title="Makers Battle">
+          <meta property="og:title" content="Makers Battle" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://makersbattle.com" />
+          <meta property="og:image" content="opengraph.png" />
+        </Helmet>
         <Header />
         {!loading &&
           <ContentContainer>
