@@ -7,7 +7,12 @@ class LandingPage extends Component {
   render() {
     return (
       <Fragment>
-        <Helmet title="Makers Battle"/>
+        <Helmet title="Makers Battle">
+          <meta property="og:title" content="Makers Battle" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://makersbattle.com" />
+          <meta property="og:image" content="opengraph.png" />
+        </Helmet>
         <LandingHero />
       </Fragment>
     );
