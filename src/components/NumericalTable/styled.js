@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray, black } from '../../utils/colors';
+import { black } from '../../utils/colors';
 
 const tableBorder = '#eee';
 

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import UserModule from '../../components/UserModule';
 
@@ -195,7 +195,7 @@ class CompetitionPage extends Component {
 
   render() {
     const { user1Score, user2Score, user1Tasks, user2Tasks, user1Praise, user2Praise, user1, user2, loading, complete,
-            duration, user1TasksPerDay, user1PointsPerDay, user1PraisePerDay, user2TasksPerDay, user2PointsPerDay, user2PraisePerDay} = this.state;
+            user1TasksPerDay, user1PointsPerDay, user1PraisePerDay, user2TasksPerDay, user2PointsPerDay, user2PraisePerDay} = this.state;
     return (
       <CompetitionPageContainer>
         <Header />

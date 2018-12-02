@@ -27,7 +27,7 @@ import {
 
 class UserModule extends Component {
   render() {
-    const { user, score, winner } = this.props;
+    const { user, winner } = this.props;
     return (
       <UserModuleContainer>
         <UserModuleCard winnner={winner}>

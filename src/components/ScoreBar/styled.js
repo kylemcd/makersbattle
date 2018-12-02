@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { gray, black } from '../../utils/colors';
-import { mediumBp } from '../../utils/breakpoints';
 
 const barBlue = '#47b8e0';
 const barRed = '#ff7473';

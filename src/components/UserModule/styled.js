@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { white , gray, black, teal } from '../../utils/colors';
+import styled from 'styled-components';
+import { white , black, teal } from '../../utils/colors';
 import { mediumBp} from '../../utils/breakpoints';
 import { darken } from 'polished';
 
