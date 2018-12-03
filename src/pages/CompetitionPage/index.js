@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Helmet from 'react-helmet';
-import UserModule from '../../components/UserModule';
+import Moment from 'react-moment';
 
 import {
   CompetitionPageContainer,
@@ -10,9 +10,11 @@ import {
   ContentContainer,
   SplitContainer,
   DividerRed,
-  DividerBlue
+  DividerBlue,
+  DateContainer
 } from './styled';
 
+import UserModule from '../../components/UserModule';
 import Header from '../../components/Header';
 import CreatedBy from '../../components/CreatedBy';
 import ScoreBar from '../../components/ScoreBar';
@@ -197,7 +199,7 @@ class CompetitionPage extends Component {
   }
 
   render() {
-    const { user1Score, user2Score, user1Tasks, user2Tasks, user1Praise, user2Praise, user1, user2, loading, complete,
+    const { startDate, endDate, user1Score, user2Score, user1Tasks, user2Tasks, user1Praise, user2Praise, user1, user2, loading, complete,
             user1TasksPerDay, user1PointsPerDay, user1PraisePerDay, user2TasksPerDay, user2PointsPerDay, user2PraisePerDay} = this.state;
     return (
       <CompetitionPageContainer>
@@ -210,6 +212,9 @@ class CompetitionPage extends Component {
         <Header />
         {!loading &&
           <ContentContainer>
+            <DateContainer>
+              <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash; <Moment format="MM-DD-YYYY">{endDate}</Moment>
+            </DateContainer>
             <UserModuleContainer>
               <UserModule user={user1} score={user1Score.toFixed(2)} winner={complete ? (user1Score > user2Score) : null} />
               <Versus>vs</Versus>

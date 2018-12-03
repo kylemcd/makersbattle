@@ -48,3 +48,10 @@ export const DividerBlue = styled.div`
   background-color: ${barBlue};
   width: 12px;
 `;
+
+export const DateContainer = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0 20px;
+`;
