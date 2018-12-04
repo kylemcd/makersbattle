@@ -135,3 +135,7 @@ export const Crown = styled.div`
   top: -30px;
   left: -20px;
 `;
+
+export const TwitterContainer = styled.div`
+  margin-top: 16px;
+`;

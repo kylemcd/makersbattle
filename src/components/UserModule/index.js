@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TwitterShareButton } from 'react-twitter-embed';
 
 import {
   UserModuleContainer,
@@ -9,14 +10,11 @@ import {
   UserName,
   UserSocialList,
   UserScore,
-  UserScoreHeader,
-  UserScoreScore,
-  MakerlogContainer,
-  Makerlog,
   Winner, 
   Loser,
   UserAvatarContainer,
-  Crown
+  Crown,
+  TwitterContainer
 } from './styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -66,20 +64,20 @@ class UserModule extends Component {
               </UserModuleCardContent>
             </UserModuleSection>
             <UserScore>
-              {winner !== null && (winner ? 
+              {winner !== null ? (winner ? 
                 <Winner>
                   Winner Winner <span role="img" aria-label="chicken">🐔</span><span role="img" aria-label="dinner">🍽</span>
                 </Winner> : 
                 <Loser>Loser</Loser>
+              ): (
+                <TwitterContainer>
+                <TwitterShareButton
+                  url={'https://makersbattle.com'}
+                  options={{ text: `I'm rooting for @${user.twitter_handle} in @MakersBattle!!` }}
+                />
+                </TwitterContainer>
               )}
             </UserScore>
-            {/* <MakerlogContainer>
-              View&nbsp; 
-              <Makerlog href={`https://getmakerlog.com/@${user.username}`} target="_blank" rel="noopener noreferrer">
-                Makerlog
-              </Makerlog> 
-              &nbsp;Profile
-            </MakerlogContainer> */}
           </UserModuleCard>
         }
       </UserModuleContainer>

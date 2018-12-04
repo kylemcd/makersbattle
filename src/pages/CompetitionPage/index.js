@@ -44,7 +44,7 @@ class CompetitionPage extends Component {
     user1PraisePerDay: [],
     user2PraisePerDay: [],
     startDate: new Date(2018, 10, 29),
-    endDate: new Date(2018, 11, 1),
+    endDate: new Date(2018, 11, 5),
     duration: 0,
     loading: true,
     complete: false
