@@ -94,17 +94,17 @@ class CompetitionPage extends Component {
             [...data].forEach((item) => {
               tasks++;
               dailyTasks++;
-              dailyPoints = dailyPoints + (parseInt(item.praise) / 250) + tasks;
+              dailyPoints = dailyPoints + (parseInt(item.praise) / 15) + tasks;
               dailyPraise = dailyPraise + parseInt(item.praise);
               if(userIndex === 0){
                 this.setState({
-                  user1Score: this.state.user1Score + (parseInt(item.praise) / 250) + tasks,
+                  user1Score: this.state.user1Score + (parseInt(item.praise) / 15) + tasks,
                   user1Tasks: tasks,
                   user1Praise: this.state.user1Praise + item.praise
                 })
               } else {
                 this.setState({
-                  user2Score: this.state.user2Score + (parseInt(item.praise) / 250) + tasks,
+                  user2Score: this.state.user2Score + (parseInt(item.praise) / 15) + tasks,
                   user2Tasks: tasks,
                   user2Praise: this.state.user2Praise + item.praise
                 })
