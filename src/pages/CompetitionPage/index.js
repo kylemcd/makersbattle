@@ -28,7 +28,7 @@ var moment = require('moment');
 class CompetitionPage extends Component {
 
   state = {
-    userIds: [73,698],
+    userIds: [73,881],
     user1: null,
     user2: null,
     user1Score: 0,
