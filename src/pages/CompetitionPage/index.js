@@ -28,7 +28,7 @@ var moment = require('moment');
 class CompetitionPage extends Component {
 
   state = {
-    userIds: [17,1],
+    userIds: [73,698],
     user1: null,
     user2: null,
     user1Score: 0,
@@ -43,8 +43,8 @@ class CompetitionPage extends Component {
     user2PointsPerDay: [],
     user1PraisePerDay: [],
     user2PraisePerDay: [],
-    startDate: new Date(2018, 10, 29),
-    endDate: new Date(2018, 11, 5),
+    startDate: new Date(2018, 11, 3),
+    endDate: new Date(2018, 11, 6),
     duration: 0,
     loading: true,
     complete: false
