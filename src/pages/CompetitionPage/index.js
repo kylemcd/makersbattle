@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Helmet from 'react-helmet';
 import Moment from 'react-moment';
@@ -11,7 +11,8 @@ import {
   SplitContainer,
   DividerRed,
   DividerBlue,
-  DateContainer
+  DateContainer,
+  TweetLink
 } from './styled';
 
 import UserModule from '../../components/UserModule';
@@ -19,6 +20,8 @@ import Header from '../../components/Header';
 import CreatedBy from '../../components/CreatedBy';
 import ScoreBar from '../../components/ScoreBar';
 import NumericalTable from '../../components/NumericalTable';
+import Sponsors from '../../components/Sponsors';
+import EmailSubscribe from '../../components/EmailSubscribe';
 
 var moment = require('moment');
 
@@ -211,31 +214,38 @@ class CompetitionPage extends Component {
         </Helmet>
         <Header />
         {!loading &&
-          <ContentContainer>
-            <DateContainer>
-              <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash; <Moment format="MM-DD-YYYY">{endDate}</Moment>
-            </DateContainer>
-            <UserModuleContainer>
-              <UserModule user={user1} score={user1Score.toFixed(2)} winner={complete ? (user1Score > user2Score) : null} />
-              <Versus>vs</Versus>
-              <UserModule user={user2} score={user2Score.toFixed(2)} winner={complete ? (user1Score < user2Score) : null} />
-            </UserModuleContainer>
-            <ScoreBar user1Score={user1Score.toFixed(2)} user2Score={user2Score.toFixed(2)} value={'Points'} emoji={`🎮`}/>
-            <ScoreBar user1Score={user1Tasks} user2Score={user2Tasks} value={'Tasks'} emoji={`✅`}/>
-            <ScoreBar user1Score={user1Praise} user2Score={user2Praise} value={'Praise'} emoji={`🙏`}/>
-            <SplitContainer>
-              <NumericalTable 
-                tasksPerDay={user1TasksPerDay}
-                pointsPerDay={user1PointsPerDay}
-                praisePerDay={user1PraisePerDay}/>
-              <DividerRed />
-              <DividerBlue />
-              <NumericalTable 
-                tasksPerDay={user2TasksPerDay}
-                pointsPerDay={user2PointsPerDay}
-                praisePerDay={user2PraisePerDay}/>
-            </SplitContainer>
-          </ContentContainer>
+          <Fragment>
+            <ContentContainer>
+              <DateContainer>
+                <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash; <Moment format="MM-DD-YYYY">{endDate}</Moment>
+              </DateContainer>
+              <UserModuleContainer>
+                <UserModule user={user1} score={user1Score.toFixed(2)} winner={complete ? (user1Score > user2Score) : null} />
+                <Versus>vs</Versus>
+                <UserModule user={user2} score={user2Score.toFixed(2)} winner={complete ? (user1Score < user2Score) : null} />
+              </UserModuleContainer>
+              <ScoreBar user1Score={user1Score.toFixed(2)} user2Score={user2Score.toFixed(2)} value={'Points'} emoji={`🎮`}/>
+              <ScoreBar user1Score={user1Tasks} user2Score={user2Tasks} value={'Tasks'} emoji={`✅`}/>
+              <ScoreBar user1Score={user1Praise} user2Score={user2Praise} value={'Praise'} emoji={`🙏`}/>
+              <SplitContainer>
+                <NumericalTable 
+                  tasksPerDay={user1TasksPerDay}
+                  pointsPerDay={user1PointsPerDay}
+                  praisePerDay={user1PraisePerDay}/>
+                <DividerRed />
+                <DividerBlue />
+                <NumericalTable 
+                  tasksPerDay={user2TasksPerDay}
+                  pointsPerDay={user2PointsPerDay}
+                  praisePerDay={user2PraisePerDay}/>
+              </SplitContainer>
+              <TweetLink>
+                Want to participate in an upcoming challenge? Tweet us <a href="https://twitter.com/makersbattle" target="_blank" rel="noopener noreferrer">@MakersBattle</a>
+              </TweetLink>
+            </ContentContainer>
+            <Sponsors />
+            <EmailSubscribe />
+          </Fragment>
         }
         <CreatedBy />
       </CompetitionPageContainer>

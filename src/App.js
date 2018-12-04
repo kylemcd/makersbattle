@@ -5,6 +5,7 @@ import './fonts.css';
 
 import LandingPage from './pages/LandingPage';
 import CompetitionPage from './pages/CompetitionPage';
+import SponsorForm from './pages/SponsorForm';
 
 ReactGA.initialize('UA-78427684-5');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -16,6 +17,7 @@ class App extends Component {
         <Router>
           <LandingPage path="/"/>
           <CompetitionPage path="/competition"/>
+          <SponsorForm path="/become-a-sponsor"/>
         </Router>
       </div>
     );
