@@ -37,7 +37,7 @@ class SponsorForm extends Component {
               <FormField id="company" name="company" type="text"/>
             </FormInputGroup>
             <FormInputGroup>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">Email*</FormLabel>
               <FormField id="email" name="email" type="email" required/>
             </FormInputGroup>
              <FormInputGroup>
