@@ -115,7 +115,7 @@ class CompetitionPage extends Component {
 
         try {
           response = await axios.get(
-            `https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`, 
+            `https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`, {headers}
           );
         } catch (error) {
           if (userIndex === 0) {
