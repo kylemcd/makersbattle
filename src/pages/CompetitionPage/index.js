@@ -76,6 +76,10 @@ class CompetitionPage extends Component {
     var user2TasksPerDay = [];
     var user2PointsPerDay = [];
     var user2PraisePerDay = [];
+
+    const headers = {
+      'X-Makerlog-Timezone': 'America/Chicago'
+    }
     for (
       let userIndex = 0;
       userIndex < this.state.userIds.length;
@@ -111,7 +115,7 @@ class CompetitionPage extends Component {
 
         try {
           response = await axios.get(
-            `https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`
+            `https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`, {headers: headers}
           );
         } catch (error) {
           if (userIndex === 0) {
