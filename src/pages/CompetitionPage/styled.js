@@ -70,3 +70,11 @@ export const TweetLink = styled.p`
     }
   }
 `;
+
+export const LoadingContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 79px);
+  width: 100%;
+`

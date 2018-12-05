@@ -11,6 +11,7 @@ class NumericalTable extends Component {
     return (
       <NumericalTableContainer>
         <Table cellPadding="0" cellSpacing="0">
+        <tbody>
           <tr>
             <td>
               <span role="img" aria-label="Day">
@@ -51,6 +52,7 @@ class NumericalTable extends Component {
             </tr>
             )
           })}
+          </tbody>
         </Table>
       </NumericalTableContainer>
     );

@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import axios from 'axios';
-import Helmet from 'react-helmet';
-import Moment from 'react-moment';
-
+import React, { Component, Fragment } from "react";
+import axios from "axios";
+import Helmet from "react-helmet";
+import Moment from "react-moment";
+import Loading from 'react-loading-animation';
 import {
   CompetitionPageContainer,
   UserModuleContainer,
@@ -12,21 +12,18 @@ import {
   DividerRed,
   DividerBlue,
   DateContainer,
-  TweetLink
-} from './styled';
-
-import UserModule from '../../components/UserModule';
-import Header from '../../components/Header';
-import CreatedBy from '../../components/CreatedBy';
-import ScoreBar from '../../components/ScoreBar';
-import NumericalTable from '../../components/NumericalTable';
-import Sponsors from '../../components/Sponsors';
-import EmailSubscribe from '../../components/EmailSubscribe';
-
-var moment = require('moment');
-
+  TweetLink,
+  LoadingContainer
+} from "./styled";
+import UserModule from "../../components/UserModule";
+import Header from "../../components/Header";
+import CreatedBy from "../../components/CreatedBy";
+import ScoreBar from "../../components/ScoreBar";
+import NumericalTable from "../../components/NumericalTable";
+import Sponsors from "../../components/Sponsors";
+import EmailSubscribe from "../../components/EmailSubscribe";
+var moment = require("moment");
 class CompetitionPage extends Component {
-
   state = {
     userIds: [73,881],
     user1: null,
@@ -48,162 +45,171 @@ class CompetitionPage extends Component {
     duration: 0,
     loading: true,
     complete: false
-  }
-
-  componentWillMount = async () =>{
-
-    const duration =  new moment.duration(this.state.endDate - this.state.startDate).asDays();
-
-    console.log(this.state.endDate)
-
+  };
+  componentDidMount = async () => {
+    const duration = new moment.duration(
+      this.state.endDate - this.state.startDate
+    ).asDays();
+    console.log(this.state.endDate);
     this.setState({
       duration
     });
-
-    if(new Date() > this.state.endDate){
+    if (new Date() > this.state.endDate) {
       this.setState({
         complete: true
-      })
+      });
     }
-  
-
-    this.getUsersTasks(duration);
+    await this.getUsersTasks(duration);
     this.getUsers();
-  }
-
-  getUsersTasks = (duration) => {
-    
-    [...this.state.userIds].forEach((id, userIndex) => {
+  };
+  getUsersTasks = async duration => {
+    var user1Score = 0;
+    var user1Tasks = 0;
+    var user1Praise = 0;
+    var user1TasksPerDay = [];
+    var user1PointsPerDay = [];
+    var user1PraisePerDay = [];
+    var user2Score = 0;
+    var user2Tasks = 0;
+    var user2Praise = 0;
+    var user2TasksPerDay = [];
+    var user2PointsPerDay = [];
+    var user2PraisePerDay = [];
+    for (
+      let userIndex = 0;
+      userIndex < this.state.userIds.length;
+      userIndex++
+    ) {
+      const id = this.state.userIds[userIndex];
       let tasks = 0;
-      for(let index = 0; index < duration; index++){
-
+      for (let index = 0; index < duration; index++) {
         let currentDate = new Date();
-        currentDate = moment(this.state.startDate, 'YYYY-MMMM-DD').add(index, 'days');
-
-        const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+        currentDate = moment(this.state.startDate, "YYYY-MMMM-DD").add(
+          index,
+          "days"
+        );
+        const months = [
+          "jan",
+          "feb",
+          "mar",
+          "apr",
+          "may",
+          "jun",
+          "jul",
+          "aug",
+          "sep",
+          "oct",
+          "nov",
+          "dec"
+        ];
         const year = moment(currentDate).year();
         const day = moment(currentDate).date();
         const month = months[moment(currentDate, "MMM").month()];
-        
-        // eslint-disable-next-line
-        axios.get(`https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`).then((response) => {
-            const data = response.data.data;
-            let dailyTasks = 0;
-            let dailyPoints = 0;
-            let dailyPraise = 0;
-            [...data].forEach((item) => {
-              tasks++;
-              dailyTasks++;
-              dailyPoints = dailyPoints + (parseInt(item.praise) / 15) + tasks;
-              dailyPraise = dailyPraise + parseInt(item.praise);
-              if(userIndex === 0){
-                this.setState({
-                  user1Score: this.state.user1Score + (parseInt(item.praise) / 15) + tasks,
-                  user1Tasks: tasks,
-                  user1Praise: this.state.user1Praise + item.praise
-                })
-              } else {
-                this.setState({
-                  user2Score: this.state.user2Score + (parseInt(item.praise) / 15) + tasks,
-                  user2Tasks: tasks,
-                  user2Praise: this.state.user2Praise + item.praise
-                })
-              }
-            });
 
-            if(userIndex === 0){
-              let tempTasksArray = this.state.user1TasksPerDay;
-              tempTasksArray.push(dailyTasks);
+        let response;
 
-              let tempPointsArray = this.state.user1PointsPerDay;
-              tempPointsArray.push(dailyPoints);
-
-              let tempPraiseArray = this.state.user1PraisePerDay;
-              tempPraiseArray.push(dailyPraise);
-
-              this.setState({
-                user1TasksPerDay: tempTasksArray,
-                user1PointsPerDay: tempPointsArray,
-                user1PraisePerDay: tempPraiseArray
-              })         
-            } else {
-              let tempArray = this.state.user2TasksPerDay;
-              tempArray.push(dailyTasks);
-
-              let tempPointsArray = this.state.user2PointsPerDay;
-              tempPointsArray.push(dailyPoints);
-
-              let tempPraiseArray = this.state.user2PraisePerDay;
-              tempPraiseArray.push(dailyPraise);
-
-              this.setState({
-                user2TasksPerDay: tempArray,
-                user2PointsPerDay: tempPointsArray,
-                user2PraisePerDay: tempPraiseArray
-              })  
-            }
-
-            
-          }).catch(error => {
-            if(userIndex === 0){
-              let tempTasksArray = this.state.user1TasksPerDay;
-              tempTasksArray.push(0);
-
-              let tempPointsArray = this.state.user1PointsPerDay;
-              tempPointsArray.push(0);
-
-              let tempPraiseArray = this.state.user1PraisePerDay;
-              tempPraiseArray.push(0);
-
-              this.setState({
-                user1TasksPerDay: tempTasksArray,
-                user1PointsPerDay: tempPointsArray,
-                user1PraisePerDay: tempPraiseArray
-              })         
-            } else {
-              let tempArray = this.state.user2TasksPerDay;
-              tempArray.push(0);
-
-              let tempPointsArray = this.state.user2PointsPerDay;
-              tempPointsArray.push(0);
-
-              let tempPraiseArray = this.state.user2PraisePerDay;
-              tempPraiseArray.push(0);
-
-              this.setState({
-                user2TasksPerDay: tempArray,
-                user2PointsPerDay: tempPointsArray,
-                user2PraisePerDay: tempPraiseArray
-              })  
-            }
-          })
-      }
-    });
-  }
-
-  getUsers(){
-    [...this.state.userIds].forEach((id, userIndex) => {
-      axios
-        .get(`https://api.getmakerlog.com/users/${id}/`)
-        .then((response) =>{
-          const user = response.data;
-          if(userIndex === 0){
-            this.setState({
-              user1: user
-            })
+        try {
+          response = await axios.get(
+            `https://api.getmakerlog.com/users/${id}/stream/${year}/${month}/${day}/`
+          );
+        } catch (error) {
+          if (userIndex === 0) {
+            user1TasksPerDay.push(0);
+            user1PointsPerDay.push(0);
+            user1PraisePerDay.push(0);
           } else {
-            this.setState({
-              user2: user,
-              loading: false
-            })
+            user2TasksPerDay.push(0);
+            user2PointsPerDay.push(0);
+            user2PraisePerDay.push(0);
           }
-        })
+        }
+
+        if (response) {
+          const data = response.data.data;
+          let dailyTasks = 0;
+          let dailyPoints = 0;
+          let dailyPraise = 0;
+          tasks = data.length;
+          [...data].forEach(item => {
+            dailyTasks++;
+            dailyPoints = dailyPoints + parseInt(item.praise) / 15 + tasks;
+            dailyPraise = dailyPraise + parseInt(item.praise);
+            if (userIndex === 0) {
+              console.log(user1Score);
+              user1Score = user1Score + parseInt(item.praise) / 15 + tasks;
+              user1Tasks = tasks;
+              user1Praise = user1Praise + item.praise;
+            } else {
+              user2Score = user1Score + parseInt(item.praise) / 15 + tasks;
+              user2Tasks = tasks;
+              user2Praise = user1Praise + item.praise;
+            }
+          });
+          if (userIndex === 0) {
+            user1TasksPerDay.push(dailyTasks);
+            user1PointsPerDay.push(dailyPoints);
+            user1PraisePerDay.push(dailyPraise);
+          } else {
+            user2TasksPerDay.push(dailyTasks);
+            user2PointsPerDay.push(dailyPoints);
+            user2PraisePerDay.push(dailyPraise);
+          }
+        }
+      }
+    }
+    this.setState({
+      user1Score,
+      user1Tasks,
+      user1Praise,
+      user1TasksPerDay,
+      user1PointsPerDay,
+      user1PraisePerDay,
+      user2Score,
+      user2Tasks,
+      user2Praise,
+      user2TasksPerDay,
+      user2PointsPerDay,
+      user2PraisePerDay
+    });
+  };
+  getUsers() {
+    [...this.state.userIds].forEach((id, userIndex) => {
+      axios.get(`https://api.getmakerlog.com/users/${id}/`).then(response => {
+        const user = response.data;
+        if (userIndex === 0) {
+          this.setState({
+            user1: user
+          });
+        } else {
+          this.setState({
+            user2: user,
+            loading: false
+          });
+        }
+      });
     });
   }
-
   render() {
-    const { startDate, endDate, user1Score, user2Score, user1Tasks, user2Tasks, user1Praise, user2Praise, user1, user2, loading, complete,
-            user1TasksPerDay, user1PointsPerDay, user1PraisePerDay, user2TasksPerDay, user2PointsPerDay, user2PraisePerDay} = this.state;
+    const {
+      startDate,
+      endDate,
+      user1Score,
+      user2Score,
+      user1Tasks,
+      user2Tasks,
+      user1Praise,
+      user2Praise,
+      user1,
+      user2,
+      loading,
+      complete,
+      user1TasksPerDay,
+      user1PointsPerDay,
+      user1PraisePerDay,
+      user2TasksPerDay,
+      user2PointsPerDay,
+      user2PraisePerDay
+    } = this.state;
     return (
       <CompetitionPageContainer>
         <Helmet title="Makers Battle">
@@ -213,44 +219,76 @@ class CompetitionPage extends Component {
           <meta property="og:image" content="opengraph.png" />
         </Helmet>
         <Header />
-        {!loading &&
+        {loading ? <LoadingContainer><Loading/></LoadingContainer> : (
           <Fragment>
             <ContentContainer>
               <DateContainer>
-                <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash; <Moment format="MM-DD-YYYY">{endDate}</Moment>
+                <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash;{" "}
+                <Moment format="MM-DD-YYYY">{endDate}</Moment>
               </DateContainer>
               <UserModuleContainer>
-                <UserModule user={user1} score={user1Score.toFixed(2)} winner={complete ? (user1Score > user2Score) : null} />
+                <UserModule
+                  user={user1}
+                  score={user1Score.toFixed(2)}
+                  winner={complete ? user1Score > user2Score : null}
+                />
                 <Versus>vs</Versus>
-                <UserModule user={user2} score={user2Score.toFixed(2)} winner={complete ? (user1Score < user2Score) : null} />
+                <UserModule
+                  user={user2}
+                  score={user2Score.toFixed(2)}
+                  winner={complete ? user1Score < user2Score : null}
+                />
               </UserModuleContainer>
-              <ScoreBar user1Score={user1Score.toFixed(2)} user2Score={user2Score.toFixed(2)} value={'Points'} emoji={`🎮`}/>
-              <ScoreBar user1Score={user1Tasks} user2Score={user2Tasks} value={'Tasks'} emoji={`✅`}/>
-              <ScoreBar user1Score={user1Praise} user2Score={user2Praise} value={'Praise'} emoji={`🙏`}/>
+              <ScoreBar
+                user1Score={user1Score.toFixed(2)}
+                user2Score={user2Score.toFixed(2)}
+                value={"Points"}
+                emoji={`🎮`}
+              />
+              <ScoreBar
+                user1Score={user1Tasks}
+                user2Score={user2Tasks}
+                value={"Tasks"}
+                emoji={`✅`}
+              />
+              <ScoreBar
+                user1Score={user1Praise}
+                user2Score={user2Praise}
+                value={"Praise"}
+                emoji={`🙏`}
+              />
               <SplitContainer>
-                <NumericalTable 
+                <NumericalTable
                   tasksPerDay={user1TasksPerDay}
                   pointsPerDay={user1PointsPerDay}
-                  praisePerDay={user1PraisePerDay}/>
+                  praisePerDay={user1PraisePerDay}
+                />
                 <DividerRed />
                 <DividerBlue />
-                <NumericalTable 
+                <NumericalTable
                   tasksPerDay={user2TasksPerDay}
                   pointsPerDay={user2PointsPerDay}
-                  praisePerDay={user2PraisePerDay}/>
+                  praisePerDay={user2PraisePerDay}
+                />
               </SplitContainer>
               <TweetLink>
-                Want to participate in an upcoming challenge? Fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLScB8nqrNtExRgmxAbefByo4TIp65KiqqGVRQrI5z2yFZ01Uew/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">this form</a>
+                Want to participate in an upcoming challenge? Fill out{" "}
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScB8nqrNtExRgmxAbefByo4TIp65KiqqGVRQrI5z2yFZ01Uew/viewform?usp=sf_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  this form
+                </a>
               </TweetLink>
             </ContentContainer>
             <Sponsors />
             <EmailSubscribe />
           </Fragment>
-        }
+        )}
         <CreatedBy />
       </CompetitionPageContainer>
     );
   }
 }
-
 export default CompetitionPage;
