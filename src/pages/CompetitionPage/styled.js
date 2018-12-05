@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { black, purple } from '../../utils/colors';
+import { black, purple, gray } from '../../utils/colors';
 import { mediumBp } from '../../utils/breakpoints';
 
 const barBlue = '#47b8e0';
@@ -77,4 +77,10 @@ export const LoadingContainer = styled.div`
   justify-content: center;
   height: calc(100vh - 79px);
   width: 100%;
-`
+`;
+
+export const LoadingCard = styled.div`
+  background-color: ${gray};
+  padding: 20px;
+  border-radius: 4px;
+`;

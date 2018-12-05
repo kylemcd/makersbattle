@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import Helmet from "react-helmet";
 import Moment from "react-moment";
-import Loading from 'react-loading-animation';
+import { SemipolarSpinner } from 'react-epic-spinners';
 import {
   CompetitionPageContainer,
   UserModuleContainer,
@@ -13,7 +13,8 @@ import {
   DividerBlue,
   DateContainer,
   TweetLink,
-  LoadingContainer
+  LoadingContainer,
+  LoadingCard
 } from "./styled";
 import UserModule from "../../components/UserModule";
 import Header from "../../components/Header";
@@ -219,7 +220,13 @@ class CompetitionPage extends Component {
           <meta property="og:image" content="opengraph.png" />
         </Helmet>
         <Header />
-        {loading ? <LoadingContainer><Loading/></LoadingContainer> : (
+        {loading ? (
+          <LoadingContainer>
+            <LoadingCard>
+              <SemipolarSpinner color="#231F38"/>
+            </LoadingCard>
+          </LoadingContainer> 
+          ) : (
           <Fragment>
             <ContentContainer>
               <UserModuleContainer>
