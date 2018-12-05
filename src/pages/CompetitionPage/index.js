@@ -240,7 +240,7 @@ class CompetitionPage extends Component {
                   praisePerDay={user2PraisePerDay}/>
               </SplitContainer>
               <TweetLink>
-                Want to participate in an upcoming challenge? Tweet us <a href="https://twitter.com/makersbattle" target="_blank" rel="noopener noreferrer">@MakersBattle</a>
+                Want to participate in an upcoming challenge? Fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLScB8nqrNtExRgmxAbefByo4TIp65KiqqGVRQrI5z2yFZ01Uew/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">this form</a>
               </TweetLink>
             </ContentContainer>
             <Sponsors />
