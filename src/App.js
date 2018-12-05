@@ -15,8 +15,8 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <LandingPage path="/"/>
-          <CompetitionPage path="/competition"/>
+          {/* <LandingPage path="/"/> */}
+          <CompetitionPage path="/"/>
           <SponsorForm path="/become-a-sponsor"/>
         </Router>
       </div>
