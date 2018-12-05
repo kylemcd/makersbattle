@@ -131,6 +131,11 @@ class CompetitionPage extends Component {
           let dailyPoints = 0;
           let dailyPraise = 0;
           tasks = data.length;
+          if(userIndex === 0){
+            user1Tasks = user1Tasks + tasks;
+          } else {
+            user2Tasks = user2Tasks + tasks;
+          }
           [...data].forEach(item => {
             dailyTasks++;
             dailyPoints = dailyPoints + parseInt(item.praise) / 15 + tasks;
@@ -138,12 +143,10 @@ class CompetitionPage extends Component {
             if (userIndex === 0) {
               console.log(user1Score);
               user1Score = user1Score + parseInt(item.praise) / 15 + tasks;
-              user1Tasks = tasks;
               user1Praise = user1Praise + item.praise;
             } else {
-              user2Score = user1Score + parseInt(item.praise) / 15 + tasks;
-              user2Tasks = tasks;
-              user2Praise = user1Praise + item.praise;
+              user2Score = user2Score + parseInt(item.praise) / 15 + tasks;
+              user2Praise = user2Praise + item.praise;
             }
           });
           if (userIndex === 0) {
