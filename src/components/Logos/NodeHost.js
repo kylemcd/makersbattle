@@ -10,7 +10,7 @@ const Logo = styled.img`
 class NodeHost extends Component {
   render() {
     return (
-      <a href="https://nodehost.ca" target="_blank" rel="noopener noreferrer">
+      <a href="https://nodehost.ca?ref=makersbattle" target="_blank" rel="noopener noreferrer">
         <Logo src="NodeHostLogo.png" />
       </a>
     );

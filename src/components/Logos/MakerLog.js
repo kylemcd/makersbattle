@@ -9,7 +9,7 @@ const Logo = styled.img`
 class MakerLog extends Component {
   render() {
     return (
-      <a href="https://getmakerlog.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://getmakerlog.com?ref=makersbattle" target="_blank" rel="noopener noreferrer">
         <Logo src="MakerLogLogo.png"/>
       </a>
     );
