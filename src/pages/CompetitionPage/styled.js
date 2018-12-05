@@ -50,10 +50,10 @@ export const DividerBlue = styled.div`
 `;
 
 export const DateContainer = styled.div`
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 16px;
+  /* font-weight: bold; */
   text-align: center;
-  margin: 40px 0 20px;
+  margin: 20px 0 20px;
 `;
 
 export const TweetLink = styled.p`

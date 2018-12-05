@@ -222,10 +222,6 @@ class CompetitionPage extends Component {
         {loading ? <LoadingContainer><Loading/></LoadingContainer> : (
           <Fragment>
             <ContentContainer>
-              <DateContainer>
-                <Moment format="MM-DD-YYYY">{startDate}</Moment> &mdash;{" "}
-                <Moment format="MM-DD-YYYY">{endDate}</Moment>
-              </DateContainer>
               <UserModuleContainer>
                 <UserModule
                   user={user1}
@@ -239,6 +235,10 @@ class CompetitionPage extends Component {
                   winner={complete ? user1Score < user2Score : null}
                 />
               </UserModuleContainer>
+              <DateContainer>
+                <Moment format="MM-DD-YYYY">{startDate}</Moment> -{" "}
+                <Moment format="MM-DD-YYYY">{endDate}</Moment>
+              </DateContainer>
               <ScoreBar
                 user1Score={user1Score.toFixed(2)}
                 user2Score={user2Score.toFixed(2)}
