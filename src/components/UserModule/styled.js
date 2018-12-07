@@ -9,7 +9,6 @@ export const UserModuleContainer = styled.div`
 `;
 
 export const UserModuleCard = styled.div`
-  background-color: ${white};
   margin-right: 0;
   @media(min-width: ${mediumBp}px){
     width: 300px;
@@ -18,7 +17,6 @@ export const UserModuleCard = styled.div`
 
 export const UserModuleSection = styled.div`
   align-items: center;
-  color: ${black};
   display: flex;
   flex-direction: column;
   justify-content: center;
